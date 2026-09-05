@@ -53,5 +53,38 @@ Efficiency
   1&\le E\le p
 \end{align*}
 
+some terms: cost optimal = $pt_p$-optimal $\implies E\sim\Theta(1)$ 
+\break
+we define problem size as the
+number of basic computation steps in the best sequential algorithm to solve the problem on a
+single processing element, where the best sequential algorithm is defined as in Section 5.2.3.
+Because it is defined in terms of sequential time complexity, the problem size is a function of
+the size of the input. The symbol we use to denote problem size is W.
 
+\begin{align*}
+  T_p&=\frac{W+T_o(W,p)}{p} \\
+  S &= \frac{pW}{W+T_o(W,p)} \\
+  E &= \frac{1}{1+T_o(W,p)/W} \\
+\end{align*}
+
+We need to maintain the ratio $T_o/W$ for keeping given efficiency a constant $E$ as given by the following equation
+\begin{align*}
+  \frac{T_o(W,p)}{W} &= \frac{1-E}{E} \\
+  W &\propto T_o\qquad&&\text{for constant E} \\ 
+  W &= KT_o(W,p)\qquad&&\text{as } K=E/(1-E)\\ 
+  W &= W(p)\qquad&&\text{for keeping E constant, this is called as }\textbf{isoefficiency function}\\ 
+\end{align*}
+
+cost optimality and isoefficiency function
+\begin{align*}
+  pT_p&=\Theta(W) \\
+  W + T_o(W,p) &= \Theta(W) \\
+  T_o(W,p) &=O(W) \\
+  W &= \Omega(T_o(W,p))
+\end{align*}
+
+when we take into account the maximum degree of concurrency of system $C(W)$, the equation for parellel time becomes 
+$$
+T_p=\frac{W+T_o(W,C(W))}{C(W)}
+$$
 \end{document}
